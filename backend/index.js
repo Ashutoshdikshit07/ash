@@ -10,7 +10,7 @@ const mainRouter  = require("./routes/index")
 app.use("/api/v1",mainRouter)
 
 
-app.get("/index", (req, res)=>{
+app.get("/", (req, res)=>{
     res.send("heelo")
 
 })
