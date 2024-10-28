@@ -22,9 +22,13 @@ const signupSchema = zod.object({
 // route added to /api/v1/user/signup 
 router.post("/signup", async (req, res)=>{
     const body = req.body
-    const {success} = signupSchema.safeParse(req.body)
 
-    if(success){
+    console.log(body)
+    const {success} = signupSchema.safeParse(body)
+    console.log(success)
+
+    if(!success){
+        console.log("in if loop")
         return res.status(411).json({
             message: "Incorrect input"
         })
