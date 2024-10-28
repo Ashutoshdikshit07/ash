@@ -15,5 +15,7 @@ app.get("/", (req, res)=>{
 
 })
     
-app.listen(3000)
+// app.listen(3000)
+
+module.exports = app;
 
