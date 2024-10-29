@@ -1,21 +1,21 @@
+require("dotenv").config(); // Load environment variables from .env
+
 const express = require("express");
-const cors = require('cors')
-// const zod = require("zod")
+const cors = require("cors");
 const app = express();
-app.use(cors())
-app.use(express.json())
 
-const mainRouter  = require("./routes/index")
+app.use(cors());
+app.use(express.json());
 
-app.use("/api/v1",mainRouter)
+const mainRouter = require("./routes/index");
+app.use("/api/v1", mainRouter);
 
+app.get("/", (req, res) => {
+    const message = process.env.NODE_ENV === "production"
+        ? "Hello from Production at https://ash-backend-alpha.vercel.app/"
+        : "Hello from Development at http://localhost:3000";
+    res.send(message);
+});
 
-app.get("/", (req, res)=>{
-    res.send("heelo")
-
-})
-    
-// app.listen(3000)
-
+// Export app for serverless deployment on Vercel
 module.exports = app;
-

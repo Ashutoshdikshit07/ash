@@ -22,6 +22,12 @@ export const Signup = () =>{
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
 
+    // Base URL from environment variable
+    // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"; // This should work correctly
+
+    const baseUrl = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
+
     
     // Function to call the backend and check if the credentials are correct.
     const handleSignUp = async ()=>{
@@ -30,11 +36,11 @@ export const Signup = () =>{
             if(errorMessage){
                 setErrorMessage("")
             }
-            const response = await axios.post("http://localhost:3000/api/v1/user/signup",{
+            const response = await axios.post(`${baseUrl}/api/v1/user/signup`, {
                 username,
                 firstName,
                 lastName,
-                password
+                password,
             })
             navigate("/dashboard")
         }
