@@ -23,8 +23,6 @@ export const Signup = () =>{
     const [errorMessage, setErrorMessage] = useState("")
 
     // Base URL from environment variable
-    // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"; // This should work correctly
 
     const baseUrl = import.meta.env.VITE_BASE_URL || "http://localhost:3000";
 
@@ -54,18 +52,10 @@ export const Signup = () =>{
         }  
     }
 
-
-    const HandleIndexClick = () =>{
-        navigate("/")
-    }
-
-    const HandleSignInClick = () =>{
-        navigate("/signin")
-    }
-
-    return <div className="bg-slate-300 h-screen flex justify-center">
+return <div className="h-screen  flex">
+    <div className="w-1/2 bg-slate-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
-            <div className="rounded-lg bg-white w-80 text-center p-2 h-max shadow-2xl shadow-slate-950">
+            {/* <div className="rounded-lg bg-white w-80 text-center p-2 h-max shadow-2xl shadow-slate-950"> */}
                 <div className="text-red-600 text-center font-mono text-lg antialiased hover:subpixel-antialiased font-semibold">
                     {errorMessage}
                 </div>
@@ -93,14 +83,11 @@ export const Signup = () =>{
                 <div></div>
                 <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
             
-            </div>
-
-            
+            {/* </div> */}
         </div>
-        
-
     </div>
+    <div className="w-1/2 bg-cover bg-center bg-red-300 flex flex-col justify-center text-center" >
+        <Heading label={"Image coming soon !!!"}/>
+    </div>
+</div>
 }
-
-{/* <Button onClick={HandleSignInClick} label={"Sign in"}/>
-            <Button onClick={HandleIndexClick} label={"Home"}/> */}
