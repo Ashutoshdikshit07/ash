@@ -47,7 +47,7 @@ export const Signup = () =>{
                 setErrorMessage(e.response.data.message)
             }
             else{
-                setErrorMessage("An error occured please try again later")
+                setErrorMessage("An error occured please try again later: ",e.response)
             }
         }  
     }
